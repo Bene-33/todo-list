@@ -1,14 +1,12 @@
-//const todolists = {default: []};
-// default todo list + todo Lists variable machen
-
-function todolists(name){
+function todolist(name){
     return {
         name,
         taskList:[]
     };
 };
 
-function task(title, description, dueDate, priority, notes, checklist, status, project){
+function task(title, description, dueDate, priority, notes, checklist, status){
+
 
     return {
         title, 
@@ -17,10 +15,10 @@ function task(title, description, dueDate, priority, notes, checklist, status, p
         priority, 
         notes, 
         checklist, 
-        status, 
-        project
+        status
     };
-}
+};
+
 
 export default task;
-export {todolists};
+export {todolist};
