@@ -1,6 +1,6 @@
 import{v4 as uuidv4} from 'uuid';
 
-function todolist(name){
+function createTodolist(name){
     const id = uuidv4();
     return {
         id,
@@ -9,10 +9,8 @@ function todolist(name){
     };
 };
 
-function task(title, description, dueDate, priority, notes, checklist, status){
+function createTask(title, description, dueDate, priority, notes, checklist, status){
     const id = uuidv4();
-
-
     return {
         title, 
         description, 
@@ -26,5 +24,5 @@ function task(title, description, dueDate, priority, notes, checklist, status){
 };
 
 
-export default task;
-export {todolist};
+export default createTask;
+export {createTodolist};
