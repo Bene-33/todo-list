@@ -23,6 +23,13 @@ function createTask(title, description, dueDate, priority, notes, checklist, sta
     };
 };
 
+function createNote(){
+    const id = uuidv4();
+    return {
+        id,
+        content: ""
+    };  
+};
 
-export default createTask;
-export {createTodolist};
+
+export {createTodolist, createTask, createNote};

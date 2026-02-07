@@ -1,6 +1,10 @@
-import createTask, {createTodolist} from './app/todo.js';
+import './style.css';
+import {createTask, createNote, createTodolist} from './app/programm.js';
+import {loadQestlog} from './dom/questlog.js';
+import {loadNotes} from './dom/notes.js';
+//import  from './dom/controller.js';
 
-
+loadQestlog();
 
 const defaultList = createTodolist("default");
 
