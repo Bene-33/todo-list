@@ -1,10 +1,9 @@
 import './style.css';
 import {createTask, createNote, createTodolist} from './app/programm.js';
-import {loadQestlog} from './dom/questlog.js';
-import {loadNotes} from './dom/notes.js';
-//import  from './dom/controller.js';
+import  {switchButton} from './dom/switchProjectNotes.js';
+import { loadQuestlog } from './dom/questlog.js';
 
-loadQestlog();
+loadQuestlog();
 
 const defaultList = createTodolist("default");
 

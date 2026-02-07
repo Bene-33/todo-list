@@ -57,28 +57,37 @@ body{
 }
 
 h1{
-    text-align:center;
+    display: flex;
     font-size: 3em;
+    padding: 0.5em;
     background-color: #483AA0;
-    padding: 1em;
+
     font-weight: bold;
 }
-#mainFrame{
+
+button{
+    color:#E3D095;
+    border: 0;
+}
+
+#switchProjectsNotes{
+        background-color: #483AA0;
+        padding: 1em;
+        font-size: 0.5em;
+}
+
+.addTaskNoteProject{
+    background-color: #0E2148;
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+#questlogContent{
     display: grid;
     grid-template-columns: 1fr 3fr;
     padding-top: 3em;
 }
-
-#projects{
-    text-align: center;
-}  
-
-#questlog{
-    text-align: center;
-}
-
-
-
 
 /* 
 colors:
