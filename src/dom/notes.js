@@ -1,6 +1,15 @@
-// just a single page with endless scrolling notes
-
-export const loadNotes = () => {
+const loadNotes = () => {
     const content = document.getElementById("content");
-    content.textContent ="test";
+    content.innerHTML =`
+    <div class = "contentHeader">
+        <div>Notes
+            <button class = "addTaskNoteProject" id = "addNote">+</button>  
+        </div>
+        <div class = "taskNotesProjectLists"></div>
+    </div>   
+    `;
 };
+
+
+
+export {loadNotes};

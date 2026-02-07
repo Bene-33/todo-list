@@ -58,10 +58,12 @@ body{
 
 h1{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: 3em;
     padding: 0.5em;
     background-color: #483AA0;
-
     font-weight: bold;
 }
 
@@ -80,13 +82,26 @@ button{
     background-color: #0E2148;
     font-size: 1.5em;
     font-weight: bold;
-
 }
 
 #questlogContent{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    padding-top: 3em;
+}
+
+.contentHeader{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    font-weight: bold;
+    padding: 1em;
+}
+
+.taskNotesProjectLists{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;  
 }
 
 /* 
