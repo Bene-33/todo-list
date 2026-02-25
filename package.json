@@ -4,11 +4,11 @@
   "description": "todo list with projects and notes",
   "main": "index.js",
   "scripts": {
-    "start": "mkdir dist && git branch gh-pages",
+    "start": "mkdir -p dist && git branch gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
-    "deploy": "npm run build && git add dist -f && git commit -m 'deploy' && git push origin `git subtree split --prefix dist main`:gh-pages --force"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "uuid": "^13.0.0"
   }
 }
