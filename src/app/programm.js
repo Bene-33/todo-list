@@ -9,11 +9,11 @@ function createTodolist(name){
     };
 };
 
-function createTask(title, description, dueDate, priority, notes, checklist, status){
+function createTask(title, content, dueDate, priority, notes, checklist, status){
     const id = uuidv4();
     return {
         title, 
-        description, 
+        content, 
         dueDate, 
         priority, 
         notes, 
@@ -31,5 +31,15 @@ function createNote(){
     };  
 };
 
+// function createProject(){}
 
-export {createTodolist, createTask, createNote};
+
+
+//function closeAddTaskNoteProjectDialog(){}
+//function submitNewTaskProjectNote(){}
+
+export {
+    createTodolist, 
+    createTask, 
+    createNote
+};
