@@ -104,6 +104,50 @@ button{
     padding: 1em;  
 }
 
+.addNewTaskProjectNoteDialog{
+    display: flex;
+    flex-direction: column;
+    border:#483AA0;
+    border-radius: 0.5em;
+    background-color: #483AA0;
+    color:#E3D095;
+    padding: 0.5em;
+}
+.addNewTaskProjectNoteDialog p{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    align-self: center;
+}
+
+.closeDialogButton{
+  align-self: flex-end;
+  color:#E3D095;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0.3em;
+}
+
+.content{
+    background-color: #7965C1;
+    padding: 2em;
+    color:#E3D095;
+    border-radius: 0.5em;
+}
+
+.submitDialogButton{
+    background-color: transparent;
+    color:#E3D095;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
 /* 
 colors:
 
