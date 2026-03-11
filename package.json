@@ -4,11 +4,11 @@
   "description": "todo list with projects and notes",
   "main": "index.js",
   "scripts": {
-    "start": "mkdir -p dist && git branch gh-pages",
+    "setup": "git checkout --orphan gh-pages && git reset --hard && git commit --allow-empty -m \"Init gh-pages\" && git push origin gh-pages && git checkout main",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
-    "deploy": "npm run build && gh-pages -d dist"
+"deploy": "npm run build && gh-pages -d dist -b gh-pages && git checkout main"
   },
   "repository": {
     "type": "git",
