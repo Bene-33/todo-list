@@ -1,7 +1,7 @@
 import './style.css';
 import {loadQuestlog} from './dom/questlog.js';
 import {createTask, createNote, createTodolist} from './app/programm.js';
-import {switchProjectsNotes, openAddTaskNoteProjectDialog} from './dom/domHandler.js';
+import {switchProjectsNotes, openAddTaskNoteProjectDialog, closeAddTaskNoteProjectDialog} from './dom/domHandler.js';
 
 loadQuestlog();
 
@@ -12,6 +12,10 @@ document.getElementById("content").addEventListener("click", (e) => {
         openAddTaskNoteProjectDialog();
 });
 
+document.getElementById("content").addEventListener("click", (e) => {
+    if(e.target.classList.contains("closeDialogButton"))
+        closeAddTaskNoteProjectDialog();
+});
 
 //tmp usage of functions
 const defaultList = createTodolist("default");

@@ -19,11 +19,16 @@ function switchProjectsNotes(){
 };
 
 function openAddTaskNoteProjectDialog(){
-    const dialog = document.getElementById("addNewTaskProjectNoteDialog");
+    const dialog = document.querySelector(".addNewTaskProjectNoteDialog");
     dialog.showModal();
 };
 
+function closeAddTaskNoteProjectDialog(){
+    const dialog = document.querySelector(".addNewTaskProjectNoteDialog");
+    dialog.close();
+};
 export{
     switchProjectsNotes,
-    openAddTaskNoteProjectDialog
+    openAddTaskNoteProjectDialog,
+    closeAddTaskNoteProjectDialog
 };

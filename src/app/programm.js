@@ -35,7 +35,7 @@ function createNote(){
 
 
 
-//function closeAddTaskNoteProjectDialog(){}
+
 //function submitNewTaskProjectNote(){}
 
 export {

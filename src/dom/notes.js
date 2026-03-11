@@ -3,7 +3,7 @@ const loadNotes = () => {
     content.innerHTML =`
     <div class = "contentHeader">
         <div>
-            Notes<button class = "addTaskNoteProject" id = "addNote">+</button>  
+            Notes<button class = "addTaskNoteProject" id= "addNote">+</button>  
         </div>
         <div class = "taskNotesProjectLists"></div>
     </div>
@@ -18,8 +18,6 @@ const loadNotes = () => {
     </dialog>   
     `;
 };
-
-
 
 export {
     loadNotes
