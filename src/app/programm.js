@@ -31,13 +31,6 @@ function createNote(){
     };  
 };
 
-// function createProject(){}
-
-
-
-
-//function submitNewTaskProjectNote(){}
-
 export {
     createTodolist, 
     createTask, 
