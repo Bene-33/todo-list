@@ -12,8 +12,8 @@ const loadNotes = () => {
         <p>Note</p>
         <form>
             <label for="content"></label>
-            <input type="text" class="content" name="content" value="" placeholder="my note" required><br>
-            <button class= "submitDialogButton"type="submit">+</button>
+            <input type="text" class="content" id="noteContent" name="content" value="" placeholder="my note" required><br>
+            <button class= "submitDialogButton" id="submitNote" type="submit" >+</button>
         </form>
     </dialog>   
     `;

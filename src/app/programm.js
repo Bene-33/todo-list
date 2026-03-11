@@ -23,16 +23,25 @@ function createTask(title, content, dueDate, priority, notes, checklist, status)
     };
 };
 
-function createNote(){
+function createNoteList(name){
     const id = uuidv4();
     return {
         id,
-        content: ""
+        name,
+        noteList:[]
+    };
+}
+function createNote(content){
+    const id = uuidv4();
+    return {
+        id,
+        content
     };  
 };
 
 export {
     createTodolist, 
-    createTask, 
+    createTask,
+    createNoteList, 
     createNote
 };
