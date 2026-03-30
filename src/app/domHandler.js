@@ -5,7 +5,7 @@ import {loadQuestlog} from "./questlog";
 import {
     createNote,
     createNoteList
-} from "../app/programm";
+} from "./programm";
 
 let isShowingQuestlog = true;
 function switchProjectsNotes(){
@@ -38,12 +38,22 @@ function closeAddTaskNoteProjectDialog(){
 //function SubmitNewProject 
 //////////////////////////////////////////// continue here 
  function submitNewNote(){
-//     document.getElementById("submitNote").onclick = () =>{
-//         const noteContent = document.getElementById("noteContent").value;
-//         createNote(noteContent);
-//         closeAddTaskNoteProjectDialog();
-//     };
+     document.getElementById("submitNote").onclick = (e) =>{
+        e.preventDefault();
+         const noteContent = document.getElementById("noteContent").value;
+         defaultNoteList.noteList.push(createNote(noteContent));
+         closeAddTaskNoteProjectDialog();
+     };
  };
+
+//function storeLocalData(){}
+//function loadLocalData(){} 
+//function deleteLocalData(){}
+
+//function deleteNote(){}
+//function deleteTask(){}
+//function deleteProject(){}
+
 
 export{
     switchProjectsNotes,
