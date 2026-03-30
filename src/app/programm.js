@@ -30,7 +30,8 @@ function createNoteList(name){
         name,
         noteList:[]
     };
-}
+};
+
 function createNote(content){
     const id = uuidv4();
     return {
