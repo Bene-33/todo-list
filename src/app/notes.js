@@ -33,5 +33,6 @@ const loadNotes = () => {
 };
 
 export {
-    loadNotes
+    loadNotes,
+    defaultNotesList
 };

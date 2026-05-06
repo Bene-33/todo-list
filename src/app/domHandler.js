@@ -1,4 +1,7 @@
-import {loadNotes} from "./notes";
+import {
+    loadNotes,
+    defaultNotesList
+} from "./notes";
 
 import {loadQuestlog} from "./questlog";
 
@@ -10,17 +13,11 @@ import {
 let isShowingQuestlog = true;
 function switchProjectsNotes(){
      if(isShowingQuestlog){
-        const currentContent = loadNotes();
+        loadNotes();
         isShowingQuestlog = false;
-        return{
-            currentContent
-        };
     } else {
         const currentContent = loadQuestlog();
         isShowingQuestlog = true;
-        return{
-            currentContent
-        };
     };
 };
 
@@ -37,18 +34,18 @@ function closeAddTaskNoteProjectDialog(){
 //function submitNewTask
 //function SubmitNewProject 
 //////////////////////////////////////////// continue here 
- function submitNewNote(){
-     document.getElementById("submitNote").onclick = (e) =>{
-        e.preventDefault();
-         const noteContent = document.getElementById("noteContent").value;
-         defaultNoteList.noteList.push(createNote(noteContent));
-         closeAddTaskNoteProjectDialog();
-     };
+ function submitNewNote(e){
+    e.preventDefault();
+    const noteContent = document.getElementById("noteContent").value;
+    defaultNotesList.noteList.push(createNote(noteContent));
+    localStorage.setItem("noteList", JSON.stringify(defaultNotesList.noteList));
+    closeAddTaskNoteProjectDialog();
+     
  };
 
-//function storeLocalData(){}
-//function loadLocalData(){} 
-//function deleteLocalData(){}
+//function storeLocalData(){} localstorage.setitem("key", JSON.stringify(data));
+//function loadLocalData(){} local.storgage.getItem("key") and JSON.parse() 
+//function deleteLocalData(){} localstorage.removeItem("key") or localstorage.clear() for all data  
 
 //function deleteNote(){}
 //function deleteTask(){}

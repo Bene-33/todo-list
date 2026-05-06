@@ -32,6 +32,11 @@ document.getElementById("content").addEventListener("click", (e) => {
         closeAddTaskNoteProjectDialog();
 });
 
+document.getElementById("content").addEventListener("click", (e) => {
+    if(e.target.classList.contains("submitDialogButton"))
+        submitNewNote(e);
+});
+
 //tmp usage of functions
 const defaultTodoList = createTodolist("defaultTodos");
 
