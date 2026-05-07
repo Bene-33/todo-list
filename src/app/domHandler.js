@@ -7,7 +7,8 @@ import {loadQuestlog} from "./questlog";
 
 import {
     createNote,
-    createNoteList
+    createNoteList,
+    storeLocalData,
 } from "./programm";
 
 let isShowingQuestlog = true;
@@ -38,7 +39,7 @@ function closeAddTaskNoteProjectDialog(){
     e.preventDefault();
     const noteContent = document.getElementById("noteContent").value;
     defaultNotesList.noteList.push(createNote(noteContent));
-    localStorage.setItem("noteList", JSON.stringify(defaultNotesList.noteList));
+    storeLocalData("noteList", defaultNotesList.noteList);
     closeAddTaskNoteProjectDialog();
      
  };

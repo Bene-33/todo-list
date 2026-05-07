@@ -1,8 +1,11 @@
-import { createNoteList
-
+import { 
+    createNoteList,
+    loadLocalData
 } from "./programm.js";
 
 const defaultNotesList = createNoteList("defaultNotes");
+
+defaultNotesList.noteList = loadLocalData("noteList", []);
 
 const loadNotes = () => {
     const content = document.getElementById("content");
