@@ -40,9 +40,22 @@ function createNote(content){
     };  
 };
 
+function storeLocalData(key, data){
+        localStorage.setItem(key, JSON.stringify(data));
+};
+
+function loadLocalData(key, fallback = null){
+    const data = localStorage.getItem(key);
+    if(data) return JSON.parse(data);
+    return fallback;
+};
+
+
 export {
     createTodolist, 
     createTask,
     createNoteList, 
-    createNote
+    createNote,
+    storeLocalData,
+    loadLocalData
 };
