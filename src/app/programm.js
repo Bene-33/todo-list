@@ -50,6 +50,13 @@ function loadLocalData(key, fallback = null){
     return fallback;
 };
 
+function deleteLocalData(key){
+    localStorage.removeItem(key);
+};
+
+function deleteAllLocalData(){
+    localStorage.clear();
+};
 
 export {
     createTodolist, 
