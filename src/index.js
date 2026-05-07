@@ -15,7 +15,8 @@ import {
     switchProjectsNotes, 
     openAddTaskNoteProjectDialog, 
     closeAddTaskNoteProjectDialog,
-    submitNewNote
+    submitNewNote,
+    deleteNote
 } from './app/domHandler.js';
 
 loadQuestlog();
@@ -36,6 +37,11 @@ document.getElementById("content").addEventListener("click", (e) => {
     if(e.target.classList.contains("submitDialogButton"))
         submitNewNote(e);
 });
+
+document.getElementById("content").addEventListener("click", (e) =>{
+    if(e.target.classList.contains("deleteTaskNoteProjectButton"))
+        deleteNote(e);
+})
 
 //tmp usage of functions
 const defaultTodoList = createTodolist("defaultTodos");

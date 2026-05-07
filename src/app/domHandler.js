@@ -33,8 +33,7 @@ function closeAddTaskNoteProjectDialog(){
 };
 
 //function submitNewTask
-//function SubmitNewProject 
-//////////////////////////////////////////// continue here 
+//function SubmitNewProject
  function submitNewNote(e){
     e.preventDefault();
     const noteContent = document.getElementById("noteContent").value;
@@ -42,14 +41,11 @@ function closeAddTaskNoteProjectDialog(){
     storeLocalData("noteList", defaultNotesList.noteList);
     closeAddTaskNoteProjectDialog();
     loadNotes();
-     
  };
 
-//function storeLocalData(){} localstorage.setitem("key", JSON.stringify(data));
-//function loadLocalData(){} local.storgage.getItem("key") and JSON.parse() 
-//function deleteLocalData(){} localstorage.removeItem("key") or localstorage.clear() for all data  
-
-//function deleteNote(){}
+function deleteNote(e){
+    return console.log("delete note");
+};
 //function deleteTask(){}
 //function deleteProject(){}
 
@@ -58,5 +54,6 @@ export{
     switchProjectsNotes,
     openAddTaskNoteProjectDialog,
     closeAddTaskNoteProjectDialog,
-    submitNewNote
+    submitNewNote,
+    deleteNote
 };
