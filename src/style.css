@@ -91,10 +91,24 @@ button{
 
 .contentHeader{
     display:flex;
-    align-items: center;
+    flex-direction: column;
+    align-items:center;
     justify-content:center;
     font-weight: bold;
     padding: 1em;
+}
+
+#notesContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1em;
+}
+.taskNotesProjectLists li{
+    font-size: 1.2em;
+    background-color: #7965C1;
+    padding: 2em;
+    border-radius: 0.5em;
 }
 
 .taskNotesProjectLists{
