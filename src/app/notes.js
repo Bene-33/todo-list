@@ -28,9 +28,14 @@ const loadNotes = () => {
     `;   
         const noteListContainer = document.getElementById("notesContainer");
         defaultNotesList.noteList.forEach(note => {
+            const string = document.createTextNode(note.content);
+            const deleteButton = document.createElement("button");
+            deleteButton.className = "deleteTaskNoteProjectButton";
+            deleteButton.textContent = "X";
             const li = document.createElement("li");
             li.className = "noteListItem";
-            li.textContent = note.content;
+            li.dataset.noteId = note.id;
+            li.append(string, deleteButton);
             noteListContainer.appendChild(li);
         });
 };

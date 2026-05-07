@@ -104,11 +104,22 @@ button{
     gap: 0.5em;
     padding: 1em;
 }
+
 .taskNotesProjectLists li{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5em;
     font-size: 1.2em;
     background-color: #7965C1;
     padding: 2em;
     border-radius: 0.5em;
+}
+
+.deleteTaskNoteProjectButton{
+    color:#E3D095;
+    background-color: transparent;
+    font-size: 1em;
 }
 
 .taskNotesProjectLists{
