@@ -24,15 +24,15 @@ const loadNotes = () => {
             <input type="text" class="content" id="noteContent" name="content" value="" placeholder="my note" required><br>
             <button class= "submitDialogButton" id="submitNote" type="submit" >+</button>
         </form>
-    </dialog>   
-    `;
-    const noteListContainer = document.getElementById("notesContainer");
-    defaultNotesList.noteList.forEach(note => {
-        const li = document.createElement("li");
-        li.className = "noteListItem";
-        li.textContent = note.content;
-        noteListContainer.appendChild(li);
-    });
+    </dialog>
+    `;   
+        const noteListContainer = document.getElementById("notesContainer");
+        defaultNotesList.noteList.forEach(note => {
+            const li = document.createElement("li");
+            li.className = "noteListItem";
+            li.textContent = note.content;
+            noteListContainer.appendChild(li);
+        });
 };
 
 export {

@@ -41,6 +41,7 @@ function closeAddTaskNoteProjectDialog(){
     defaultNotesList.noteList.push(createNote(noteContent));
     storeLocalData("noteList", defaultNotesList.noteList);
     closeAddTaskNoteProjectDialog();
+    loadNotes();
      
  };
 
