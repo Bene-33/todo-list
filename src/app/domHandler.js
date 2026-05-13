@@ -8,7 +8,7 @@ import {loadQuestlog} from "./questlog";
 import {
     createNote,
     createNoteList,
-    storeLocalData,
+    storeLocalData
 } from "./programm";
 
 let isShowingQuestlog = true;
@@ -44,7 +44,11 @@ function closeAddTaskNoteProjectDialog(){
  };
 
 function deleteNote(e){
-    return console.log("delete note");
+    const noteID = e.target.closest("li").dataset.noteId;
+    const arrayIndex = defaultNotesList.noteList.findIndex(note => note.id === noteID);
+    defaultNotesList.noteList.splice(arrayIndex, 1);
+    storeLocalData("noteList", defaultNotesList.noteList);
+    loadNotes();
 };
 //function deleteTask(){}
 //function deleteProject(){}

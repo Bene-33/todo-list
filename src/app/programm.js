@@ -64,5 +64,7 @@ export {
     createNoteList, 
     createNote,
     storeLocalData,
-    loadLocalData
+    loadLocalData,
+    deleteLocalData,
+    deleteAllLocalData
 };
