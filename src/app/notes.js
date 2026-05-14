@@ -30,7 +30,7 @@ const loadNotes = () => {
         defaultNotesList.noteList.forEach(note => {
             const string = document.createTextNode(note.content);
             const deleteButton = document.createElement("button");
-            deleteButton.className = "deleteTaskNoteProjectButton";
+            deleteButton.className = "deleteTaskNoteProjectButton deleteNoteButton";
             deleteButton.textContent = "X";
             const li = document.createElement("li");
             li.className = "noteListItem";
