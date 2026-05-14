@@ -3,20 +3,15 @@ import './style.css';
 import {
     loadQuestlog
 } from './app/questlog.js';
-////////// could it be transfered to domHandler.js?
-import {
-    createTask, 
-    createNote, 
-    createTodolist,
-    createNoteList
-} from './app/programm.js';
-//////////////
+
 import {
     switchProjectsNotes, 
     openAddTaskNoteProjectDialog, 
     closeAddTaskNoteProjectDialog,
     submitNewNote,
-    deleteNote
+    deleteNote,
+    submitNewTask,
+    deleteTask
 } from './app/domHandler.js';
 
 loadQuestlog();
@@ -34,19 +29,19 @@ document.getElementById("content").addEventListener("click", (e) => {
 });
 
 document.getElementById("content").addEventListener("click", (e) => {
-    if(e.target.classList.contains("submitDialogButton"))
-        submitNewNote(e);
+    if (e.target.id === "submitNote") submitNewNote(e);
 });
 
 document.getElementById("content").addEventListener("click", (e) =>{
-    if(e.target.classList.contains("deleteTaskNoteProjectButton"))
+    if(e.target.classList.contains("deleteNoteButton"))
         deleteNote(e);
-})
+});
 
-//tmp usage of functions
-const defaultTodoList = createTodolist("defaultTodos");
+document.getElementById("content").addEventListener("click", (e) => {
+    if (e.target.id === "submitTask") submitNewTask(e);
+});
 
-defaultTodoList.taskList.push(createTask("task1", "description1", "2024-06-30", "high", "notes1", "checklist1", "status1", "project1"));
-defaultTodoList.taskList.push(createTask("task2", "description2", "2024-07-15", "medium", "notes2", "checklist2", "status2", "project2"));
-
-console.log(defaultTodoList);
+document.getElementById("content").addEventListener("click", (e) =>{
+    if(e.target.classList.contains("deleteTaskButton"))
+        deleteTask(e);
+});

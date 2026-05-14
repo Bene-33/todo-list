@@ -1,6 +1,6 @@
 import{v4 as uuidv4} from 'uuid';
 
-function createTodolist(name){
+function createTasklist(name){
     const id = uuidv4();
     return {
         id,
@@ -59,7 +59,7 @@ function deleteAllLocalData(){
 };
 
 export {
-    createTodolist, 
+    createTasklist, 
     createTask,
     createNoteList, 
     createNote,

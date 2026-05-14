@@ -3,12 +3,16 @@ import {
     defaultNotesList
 } from "./notes";
 
-import {loadQuestlog} from "./questlog";
+import {
+    loadQuestlog,
+    defaultTaskList
+} from "./questlog";
 
 import {
     createNote,
     createNoteList,
-    storeLocalData
+    storeLocalData,
+    createTask,
 } from "./programm";
 
 let isShowingQuestlog = true;
@@ -32,16 +36,14 @@ function closeAddTaskNoteProjectDialog(){
     dialog.close();
 };
 
-//function submitNewTask
-//function SubmitNewProject
- function submitNewNote(e){
+function submitNewNote(e){
     e.preventDefault();
     const noteContent = document.getElementById("noteContent").value;
     defaultNotesList.noteList.push(createNote(noteContent));
     storeLocalData("noteList", defaultNotesList.noteList);
     closeAddTaskNoteProjectDialog();
     loadNotes();
- };
+};
 
 function deleteNote(e){
     const noteID = e.target.closest("li").dataset.noteId;
@@ -50,8 +52,31 @@ function deleteNote(e){
     storeLocalData("noteList", defaultNotesList.noteList);
     loadNotes();
 };
-//function deleteTask(){}
-//function deleteProject(){}
+
+function submitNewTask(e){
+    e.preventDefault();
+    const taskContent = document.getElementById("taskContent").value;
+    defaultTaskList.taskList.push(createTask(taskContent));
+    storeLocalData("taskList", defaultTaskList.taskList);
+    closeAddTaskNoteProjectDialog();
+    loadQuestlog();
+};
+
+function deleteTask(e){
+    const taskID = e.target.closest("li").dataset.taskId;
+    const arrayIndex = defaultTaskList.taskList.findIndex(task => task.id === taskID);
+    defaultTaskList.taskList.splice(arrayIndex, 1);
+    storeLocalData("taskList", defaultTaskList.taskList);
+    loadQuestlog();
+};
+
+function SubmitNewProject(){
+
+};
+
+function deleteProject(){
+
+};
 
 
 export{
@@ -59,5 +84,9 @@ export{
     openAddTaskNoteProjectDialog,
     closeAddTaskNoteProjectDialog,
     submitNewNote,
-    deleteNote
+    deleteNote,
+    submitNewTask,
+    deleteTask,
+    SubmitNewProject,
+    deleteProject
 };
