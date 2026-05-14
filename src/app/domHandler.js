@@ -53,14 +53,14 @@ function deleteNote(e){
     loadNotes();
 };
 
-function submitNewTask(e, title, content, dueDate, priority, status){
+function submitNewTask(e){
     e.preventDefault();
     const taskTitle = document.getElementById("taskTitle").value;
     const taskContent = document.getElementById("taskContent").value;
     const taskDueDate = document.getElementById("taskDueDate").value;
     const taskPriority = document.getElementById("taskPriority").value;
     const taskStatus = document.getElementById("taskStatus").value;
-    defaultTaskList.taskList.push(createTask(taskContent));
+    defaultTaskList.taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
     storeLocalData("taskList", defaultTaskList.taskList);
     closeAddTaskNoteProjectDialog();
     loadQuestlog();
@@ -74,14 +74,16 @@ function deleteTask(e){
     loadQuestlog();
 };
 
-function SubmitNewProject(){
-
+function submitNewQuest(e){
+    e.preventDefault();
+    const quest = document.getElementById("quest").value;
+    storeLocalData("taskList", defaultTaskList.taskList);
+    closeAddTaskNoteProjectDialog();
+    loadQuestlog();
 };
 
 function deleteProject(){
-
 };
-
 
 export{
     switchProjectsNotes,
@@ -91,6 +93,6 @@ export{
     deleteNote,
     submitNewTask,
     deleteTask,
-    SubmitNewProject,
+    submitNewQuest,
     deleteProject
 };

@@ -15,9 +15,7 @@ function createTask(title, content, dueDate, priority, status){
         title, 
         content, 
         dueDate, 
-        priority, 
-        notes, 
-        checklist, 
+        priority,
         status,
         id
     };

@@ -28,7 +28,6 @@ const loadQuestlog = () => {
         <button class ="closeDialogButton">X</button>
         <p>Task</p>
         <form>
-            <label for="content"></label>
             <input type="text" class="content" id="taskTitle" name="title" value="" placeholder="Title" required><br>
             <textarea class="content" id="taskContent" placeholder="content"></textarea><br>
             <label class = "formSubLabel" for="taskDueDate">Due Date</label><br>
@@ -54,7 +53,7 @@ const loadQuestlog = () => {
     <form>
         <label for="content"></label>
         <input type="text" class="content" id="quest" name="title" value="" placeholder="Quest" required><br>
-        <button class= "submitDialogButton" id="submitTask" type="submit" >+</button>
+        <button class= "submitDialogButton" id="submitQuest" type="submit" >+</button>
     </form>
     </dialog>
     `;
