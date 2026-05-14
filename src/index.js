@@ -29,20 +29,11 @@ document.getElementById("content").addEventListener("click", (e) => {
 });
 
 document.getElementById("content").addEventListener("click", (e) => {
-    if (e.target.id === "submitNote") submitNewNote(e)
-        else if (e.target.id === "submitTask") submitNewTask(e);
+    if (e.target.id === "submitNote") submitNewNote(e);
+    else if (e.target.id === "submitTask") submitNewTask(e);
 });
 
 document.getElementById("content").addEventListener("click", (e) =>{
-    if(e.target.classList.contains("deleteNoteButton"))
-        deleteNote(e);
-});
-
-document.getElementById("content").addEventListener("click", (e) => {
-    if (e.target.id === "submitTask") submitNewTask(e);
-});
-
-document.getElementById("content").addEventListener("click", (e) =>{
-    if(e.target.classList.contains("deleteTaskButton"))
-        deleteTask(e);
+    if(e.target.classList.contains("deleteNoteButton")) deleteNote(e);
+    else if (e.target.classList.contains("deleteTaskButton")) deleteTask(e);
 });
