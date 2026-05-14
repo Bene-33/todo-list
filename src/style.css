@@ -182,6 +182,13 @@ form{
     font-size:0.6em;
     
 }
+
+.taskBody{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 /* 
 colors:
 

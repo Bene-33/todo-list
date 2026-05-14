@@ -64,14 +64,37 @@ const loadQuestlog = () => {
             const taskDueDate = document.createTextNode(task.dueDate);
             const taskPriority = document.createTextNode(task.priority);
             const taskStatus = document.createTextNode(task.status);
+            
+            
+            const taskContentContainer = document.createElement("span");
+            taskContentContainer.className = "taskContent";
+            taskContentContainer.append(taskContent);
+
+            const taskDueDateContainer = document.createElement("span");
+            taskDueDateContainer.className = "taskDueDate";
+            taskDueDateContainer.append("Due Date: ", taskDueDate);
+
+            const taskPriorityContainer = document.createElement("span");
+            taskPriorityContainer.className = "taskPriority";
+            taskPriorityContainer.append("Prio: ", taskPriority);
+
+            const taskStatusContainer = document.createElement("span");
+            taskStatusContainer.className = "taskStatus";
+            taskStatusContainer.append("Status: ", taskStatus);
+
+            const taskBodyContainer = document.createElement("div");
+            taskBodyContainer.className = "taskBody";
+            taskBodyContainer.append(taskDueDateContainer, taskPriorityContainer, taskStatusContainer);
+
             const deleteButton = document.createElement("button");
             deleteButton.className = "deleteTaskNoteProjectButton deleteTaskButton";
             deleteButton.textContent = "X";
+
             const li = document.createElement("li");
             li.className = "taskListItem";
             li.dataset.taskId = task.id;
-            li.append(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus, deleteButton);
-            taskListContainer.appendChild(li);
+            li.append(taskTitle, taskContentContainer,taskBodyContainer, deleteButton);
+            taskListContainer.appendChild(li,);
         });
 };
 
