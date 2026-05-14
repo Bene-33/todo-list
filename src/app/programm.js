@@ -9,7 +9,7 @@ function createTasklist(name){
     };
 };
 
-function createTask(title, content, dueDate, priority, notes, checklist, status){
+function createTask(title, content, dueDate, priority, status){
     const id = uuidv4();
     return {
         title, 

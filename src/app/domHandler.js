@@ -53,9 +53,13 @@ function deleteNote(e){
     loadNotes();
 };
 
-function submitNewTask(e){
+function submitNewTask(e, title, content, dueDate, priority, status){
     e.preventDefault();
+    const taskTitle = document.getElementById("taskTitle").value;
     const taskContent = document.getElementById("taskContent").value;
+    const taskDueDate = document.getElementById("taskDueDate").value;
+    const taskPriority = document.getElementById("taskPriority").value;
+    const taskStatus = document.getElementById("taskStatus").value;
     defaultTaskList.taskList.push(createTask(taskContent));
     storeLocalData("taskList", defaultTaskList.taskList);
     closeAddTaskNoteProjectDialog();
