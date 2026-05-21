@@ -100,13 +100,13 @@ const loadQuestlog = () => {
             
             const taskHiddenContainer = document.createElement("span");
             taskHiddenContainer.className = "taskHidden";
-            taskHiddenContainer.append(taskContentContainer, taskBodyContainer, deleteButton);
+            taskHiddenContainer.append(taskContentContainer, taskBodyContainer);
 
 
             const li = document.createElement("li");
             li.className = "taskListItem";
             li.dataset.taskId = task.id;
-            li.append(taskHeaderContainer, expandButton, taskHiddenContainer);
+            li.append(taskHeaderContainer, expandButton, taskHiddenContainer, deleteButton);
             taskListContainer.appendChild(li);
         });
 };
