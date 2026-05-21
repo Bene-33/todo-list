@@ -206,6 +206,14 @@ form{
     font-size: 1.2em;
 }
 
+.taskHidden{
+    display: none;
+}
+
+.taskHidden.expanded{
+    display: flex;
+}
+
 /* 
 colors:
 

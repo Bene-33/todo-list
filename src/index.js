@@ -37,3 +37,13 @@ document.getElementById("content").addEventListener("click", (e) =>{
     if(e.target.classList.contains("deleteNoteButton")) deleteNote(e);
     else if (e.target.classList.contains("deleteTaskButton")) deleteTask(e);
 });
+
+document.getElementById("content").addEventListener("click", (e) => {
+    if(e.target.classList.contains("expandTaskButton")){
+        const li = e.target.closest("li");
+        const isOpen = li.querySelector(".taskHidden").classList.contains("expanded");
+        li.querySelector(".taskHidden").classList.toggle("expanded")
+        if(isOpen) {e.target.textContent = "<"}
+        else    {e.target.textContent = ">"};
+    }
+});
