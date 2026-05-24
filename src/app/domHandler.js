@@ -5,7 +5,7 @@ import {
 
 import {
     loadQuestlog,
-    defaultQuest
+    getActiveQuest,
 } from "./questlog";
 
 import {
@@ -60,17 +60,17 @@ function submitNewTask(e){
     const taskDueDate = document.getElementById("taskDueDate").value;
     const taskPriority = document.getElementById("taskPriority").value;
     const taskStatus = document.getElementById("taskStatus").value;
-    defaultQuest.taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
-    storeLocalData("taskList", defaultQuest.taskList);
+    getActiveQuest().taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
+    storeLocalData("taskList", getActiveQuest().taskList);
     closeAddTaskNoteProjectDialog();
     loadQuestlog();
 };
 
 function deleteTask(e){
     const taskID = e.target.closest("li").dataset.taskId;
-    const arrayIndex = defaultQuest.taskList.findIndex(task => task.id === taskID);
-    defaultQuest.taskList.splice(arrayIndex, 1);
-    storeLocalData("taskList", defaultQuest.taskList);
+    const arrayIndex = getActiveQuest().taskList.findIndex(task => task.id === taskID);
+    getActiveQuest().taskList.splice(arrayIndex, 1);
+    storeLocalData("taskList", getActiveQuest().taskList);
     loadQuestlog();
 };
 

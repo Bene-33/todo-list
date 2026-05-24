@@ -4,8 +4,13 @@ import {
 } from "./programm.js";
 
 const defaultQuest = createQuest("default");
+const quests = [defaultQuest];
+let activeQuestId = quests[0].id; 
+// defaultQuest.taskList = loadLocalData("taskList", []);
 
-defaultQuest.taskList = loadLocalData("taskList", []);
+function getActiveQuest(){
+    return quests.find(quest => quest.id === activeQuestId);
+};
 
 const loadQuestlog = () => {
     const content = document.getElementById("content");
@@ -58,7 +63,7 @@ const loadQuestlog = () => {
     </dialog>
     `;
      const taskListContainer = document.getElementById("taskContainer");
-        defaultQuest.taskList.forEach(task => {
+        getActiveQuest().taskList.forEach(task => {
             const taskTitle = document.createTextNode(task.title);
             const taskContent = document.createTextNode(task.content);
             const taskDueDate = document.createTextNode(task.dueDate);
@@ -113,5 +118,5 @@ const loadQuestlog = () => {
 
 export {
     loadQuestlog,
-    defaultQuest
+    getActiveQuest
 };
