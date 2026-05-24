@@ -1,16 +1,15 @@
 import { 
     createQuest,
-    loadLocalData
+    loadLocalData,
+    storeLocalData
 } from "./programm.js";
 
 const defaultQuest = createQuest("default");
-const quests = [defaultQuest];
+let quests = loadLocalData("quests", [defaultQuest]);
 let activeQuestId = quests[0].id; 
 // defaultQuest.taskList = loadLocalData("taskList", []);
 
-function getActiveQuest(){
-    return quests.find(quest => quest.id === activeQuestId);
-};
+
 
 const loadQuestlog = () => {
     const content = document.getElementById("content");
@@ -18,7 +17,7 @@ const loadQuestlog = () => {
     `<div id = "questlogContent">
             <div id = "sidebar">
                 <div class = "contentHeader">
-                    Questlog<button class = "addTaskNoteProject" id = "addProject">+</button>
+                    Questlog<button class = "addTaskNoteProject" id = "addQuest">+</button>
                 </div>
                 <ul id ="projectContainer" class = "taskNotesProjectLists"></ul>
             </div>
@@ -29,7 +28,7 @@ const loadQuestlog = () => {
                 <ul id ="taskContainer" class = "taskNotesProjectLists"></ul>
             </div>
     </div>
-    <dialog class="addNewTaskProjectNoteDialog">
+    <dialog class="addNewTaskProjectNoteDialog" id ="addNewTaskDialog">
         <button class ="closeDialogButton">X</button>
         <p>Task</p>
         <form>
@@ -52,7 +51,7 @@ const loadQuestlog = () => {
             <button class= "submitDialogButton" id="submitTask" type="submit" >+</button>
         </form>
     </dialog>
-    <dialog class="addNewTaskProjectNoteDialog">
+    <dialog class="addNewQuestDialog addNewTaskProjectNoteDialog">
         <button class ="closeDialogButton">X</button>
         <p>Quest</p>
     <form>
@@ -116,7 +115,18 @@ const loadQuestlog = () => {
         });
 };
 
+function getActiveQuest(){
+    return quests.find(quest => quest.id === activeQuestId);
+};
+
+function saveQuests(){
+    storeLocalData("quests", quests);
+    storeLocalData("activeQuestId", activeQuestId);
+};
+
+
 export {
     loadQuestlog,
-    getActiveQuest
+    getActiveQuest,
+    saveQuests
 };

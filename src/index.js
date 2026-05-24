@@ -6,8 +6,7 @@ import {
 
 import {
     switchProjectsNotes, 
-    openAddTaskNoteProjectDialog, 
-    closeAddTaskNoteProjectDialog,
+    openDialog,
     submitNewNote,
     deleteNote,
     submitNewTask,
@@ -19,14 +18,16 @@ loadQuestlog();
 document.getElementById("switchProjectsNotes").addEventListener("click", switchProjectsNotes);
 
 document.getElementById("content").addEventListener("click", (e) => {
-    if(e.target.classList.contains("addTaskNoteProject"))
-        openAddTaskNoteProjectDialog();
+    if (e.target.id === "addTask")    openDialog(".addNewTaskProjectNoteDialog");
+    else if (e.target.id === "addQuest") openDialog(".addNewQuestDialog");
+    else if (e.target.id === "addNote")    openDialog(".addNewTaskProjectNoteDialog");   // siehe unten
 });
 
 document.getElementById("content").addEventListener("click", (e) => {
     if(e.target.classList.contains("closeDialogButton"))
-        closeAddTaskNoteProjectDialog();
+        e.target.closest("dialog").close();
 });
+
 
 document.getElementById("content").addEventListener("click", (e) => {
     if (e.target.id === "submitNote") submitNewNote(e);

@@ -6,6 +6,7 @@ import {
 import {
     loadQuestlog,
     getActiveQuest,
+    saveQuests
 } from "./questlog";
 
 import {
@@ -26,14 +27,9 @@ function switchProjectsNotes(){
     };
 };
 
-function openAddTaskNoteProjectDialog(){
-    const dialog = document.querySelector(".addNewTaskProjectNoteDialog");
+function openDialog(selector){
+    const dialog = document.querySelector(selector);
     dialog.showModal();
-};
-
-function closeAddTaskNoteProjectDialog(){
-    const dialog = document.querySelector(".addNewTaskProjectNoteDialog");
-    dialog.close();
 };
 
 function submitNewNote(e){
@@ -41,7 +37,7 @@ function submitNewNote(e){
     const noteContent = document.getElementById("noteContent").value;
     defaultNotesList.noteList.push(createNote(noteContent));
     storeLocalData("noteList", defaultNotesList.noteList);
-    closeAddTaskNoteProjectDialog();
+    e.target.closest("dialog").close();
     loadNotes();
 };
 
@@ -61,8 +57,8 @@ function submitNewTask(e){
     const taskPriority = document.getElementById("taskPriority").value;
     const taskStatus = document.getElementById("taskStatus").value;
     getActiveQuest().taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
-    storeLocalData("taskList", getActiveQuest().taskList);
-    closeAddTaskNoteProjectDialog();
+    saveQuests();
+    e.target.closest("dialog").close();
     loadQuestlog();
 };
 
@@ -70,7 +66,7 @@ function deleteTask(e){
     const taskID = e.target.closest("li").dataset.taskId;
     const arrayIndex = getActiveQuest().taskList.findIndex(task => task.id === taskID);
     getActiveQuest().taskList.splice(arrayIndex, 1);
-    storeLocalData("taskList", getActiveQuest().taskList);
+    saveQuests();
     loadQuestlog();
 };
 
@@ -88,8 +84,7 @@ function deleteProject(){
 
 export{
     switchProjectsNotes,
-    openAddTaskNoteProjectDialog,
-    closeAddTaskNoteProjectDialog,
+    openDialog,
     submitNewNote,
     deleteNote,
     submitNewTask,
