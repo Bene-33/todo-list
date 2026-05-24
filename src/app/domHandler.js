@@ -6,14 +6,15 @@ import {
 import {
     loadQuestlog,
     getActiveQuest,
-    saveQuests
+    saveQuests,
+    addQuest
 } from "./questlog";
 
 import {
     createNote,
     createNoteList,
     storeLocalData,
-    createTask,
+    createTask
 } from "./programm";
 
 let isShowingQuestlog = true;
@@ -72,11 +73,10 @@ function deleteTask(e){
 
 function submitNewQuest(e){
     e.preventDefault();
-//     Hier die funktionen ergänzen zum anlegen von quests
-//     const quest = document.getElementById("quest").value;
-//     storeLocalData("questList", defaultQuest.taskList);
-//     closeAddTaskNoteProjectDialog();
-//     loadQuestlog();
+    const questName = document.getElementById("quest").value;
+    addQuest(questName);
+    e.target.closest("dialog").close();
+    loadQuestlog();
 };
 
 function deleteProject(){

@@ -189,13 +189,6 @@ form{
     gap: 1em;
 }
 
-.taskHidden{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
 .taskContent{
     padding: 0em 1em;
 }
@@ -212,6 +205,11 @@ form{
 
 .taskHidden.expanded{
     display: flex;
+}
+
+.taskNotesProjectLists .questItem{
+    background-color: #0E2148;
+
 }
 
 /* 

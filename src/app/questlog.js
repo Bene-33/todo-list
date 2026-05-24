@@ -61,58 +61,74 @@ const loadQuestlog = () => {
     </form>
     </dialog>
     `;
-     const taskListContainer = document.getElementById("taskContainer");
-        getActiveQuest().taskList.forEach(task => {
-            const taskTitle = document.createTextNode(task.title);
-            const taskContent = document.createTextNode(task.content);
-            const taskDueDate = document.createTextNode(task.dueDate);
-            const taskPriority = document.createTextNode(task.priority);
-            const taskStatus = document.createTextNode(task.status);
 
-            const taskHeaderContainer = document.createElement("span");
-            taskHeaderContainer.className = "taskHeader";
-            taskHeaderContainer.append(taskTitle, document.createElement("br"), "Due Date: ", taskDueDate,);
-            
-            
-            const taskContentContainer = document.createElement("span");
-            taskContentContainer.className = "taskContent";
-            taskContentContainer.append(taskContent);
+    const questListContainer = document.getElementById("projectContainer");
+    quests.forEach(quest => {
+        const questName = document.createTextNode(quest.name);
 
-            const taskDueDateContainer = document.createElement("span");
-            taskDueDateContainer.className = "taskDueDate";
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "deleteTaskNoteProjectButton deleteQuestButton";
+        deleteButton.textContent = "X";
 
-            
-            const taskPriorityContainer = document.createElement("span");
-            taskPriorityContainer.className = "taskPriority";
-            taskPriorityContainer.append("Prio: ", taskPriority);
-            
-            const taskStatusContainer = document.createElement("span");
-            taskStatusContainer.className = "taskStatus";
-            taskStatusContainer.append("Status: ", taskStatus);
-            
-            const taskBodyContainer = document.createElement("div");
-            taskBodyContainer.className = "taskBody";
-            taskBodyContainer.append(taskDueDateContainer, taskPriorityContainer, taskStatusContainer);
-            
-            const deleteButton = document.createElement("button");
-            deleteButton.className = "deleteTaskNoteProjectButton deleteTaskButton";
-            deleteButton.textContent = "X";
-            
-            const expandButton = document.createElement("button");
-            expandButton.className = "expandTaskButton";
-            expandButton.textContent = ">";
-            
-            const taskHiddenContainer = document.createElement("span");
-            taskHiddenContainer.className = "taskHidden";
-            taskHiddenContainer.append(taskContentContainer, taskBodyContainer);
+        const li = document.createElement("li");
+        li.className = "questItem";
+        li.dataset.questId = quest.id;
+        li.append(questName, deleteButton);
+        questListContainer.appendChild(li);
+    });
+
+    const taskListContainer = document.getElementById("taskContainer");
+    getActiveQuest().taskList.forEach(task => {
+        const taskTitle = document.createTextNode(task.title);
+        const taskContent = document.createTextNode(task.content);
+        const taskDueDate = document.createTextNode(task.dueDate);
+        const taskPriority = document.createTextNode(task.priority);
+        const taskStatus = document.createTextNode(task.status);
+
+        const taskHeaderContainer = document.createElement("span");
+        taskHeaderContainer.className = "taskHeader";
+        taskHeaderContainer.append(taskTitle, document.createElement("br"), "Due Date: ", taskDueDate,);
+        
+        
+        const taskContentContainer = document.createElement("span");
+        taskContentContainer.className = "taskContent";
+        taskContentContainer.append(taskContent);
+
+        const taskDueDateContainer = document.createElement("span");
+        taskDueDateContainer.className = "taskDueDate";
+
+        
+        const taskPriorityContainer = document.createElement("span");
+        taskPriorityContainer.className = "taskPriority";
+        taskPriorityContainer.append("Prio: ", taskPriority);
+        
+        const taskStatusContainer = document.createElement("span");
+        taskStatusContainer.className = "taskStatus";
+        taskStatusContainer.append("Status: ", taskStatus);
+        
+        const taskBodyContainer = document.createElement("div");
+        taskBodyContainer.className = "taskBody";
+        taskBodyContainer.append(taskDueDateContainer, taskPriorityContainer, taskStatusContainer);
+        
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "deleteTaskNoteProjectButton deleteTaskButton";
+        deleteButton.textContent = "X";
+        
+        const expandButton = document.createElement("button");
+        expandButton.className = "expandTaskButton";
+        expandButton.textContent = ">";
+        
+        const taskHiddenContainer = document.createElement("span");
+        taskHiddenContainer.className = "taskHidden";
+        taskHiddenContainer.append(taskContentContainer, taskBodyContainer);
 
 
-            const li = document.createElement("li");
-            li.className = "taskListItem";
-            li.dataset.taskId = task.id;
-            li.append(taskHeaderContainer, expandButton, taskHiddenContainer, deleteButton);
-            taskListContainer.appendChild(li);
-        });
+        const li = document.createElement("li");
+        li.className = "taskListItem";
+        li.dataset.taskId = task.id;
+        li.append(taskHeaderContainer, expandButton, taskHiddenContainer, deleteButton);
+        taskListContainer.appendChild(li);
+    });
 };
 
 function getActiveQuest(){
@@ -124,9 +140,16 @@ function saveQuests(){
     storeLocalData("activeQuestId", activeQuestId);
 };
 
+function addQuest(name){
+    const quest = createQuest(name);
+    quests.push(quest);
+    saveQuests()
+    return quest;
+}
 
 export {
     loadQuestlog,
     getActiveQuest,
-    saveQuests
+    saveQuests,
+    addQuest
 };
