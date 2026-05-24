@@ -1,11 +1,11 @@
 import { 
-    createTasklist,
+    createQuest,
     loadLocalData
 } from "./programm.js";
 
-const defaultTaskList = createTasklist("defaultTasks");
+const defaultQuest = createQuest("default");
 
-defaultTaskList.taskList = loadLocalData("taskList", []);
+defaultQuest.taskList = loadLocalData("taskList", []);
 
 const loadQuestlog = () => {
     const content = document.getElementById("content");
@@ -58,7 +58,7 @@ const loadQuestlog = () => {
     </dialog>
     `;
      const taskListContainer = document.getElementById("taskContainer");
-        defaultTaskList.taskList.forEach(task => {
+        defaultQuest.taskList.forEach(task => {
             const taskTitle = document.createTextNode(task.title);
             const taskContent = document.createTextNode(task.content);
             const taskDueDate = document.createTextNode(task.dueDate);
@@ -113,5 +113,5 @@ const loadQuestlog = () => {
 
 export {
     loadQuestlog,
-    defaultTaskList
+    defaultQuest
 };

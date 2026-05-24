@@ -5,7 +5,7 @@ import {
 
 import {
     loadQuestlog,
-    defaultTaskList
+    defaultQuest
 } from "./questlog";
 
 import {
@@ -60,26 +60,27 @@ function submitNewTask(e){
     const taskDueDate = document.getElementById("taskDueDate").value;
     const taskPriority = document.getElementById("taskPriority").value;
     const taskStatus = document.getElementById("taskStatus").value;
-    defaultTaskList.taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
-    storeLocalData("taskList", defaultTaskList.taskList);
+    defaultQuest.taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
+    storeLocalData("taskList", defaultQuest.taskList);
     closeAddTaskNoteProjectDialog();
     loadQuestlog();
 };
 
 function deleteTask(e){
     const taskID = e.target.closest("li").dataset.taskId;
-    const arrayIndex = defaultTaskList.taskList.findIndex(task => task.id === taskID);
-    defaultTaskList.taskList.splice(arrayIndex, 1);
-    storeLocalData("taskList", defaultTaskList.taskList);
+    const arrayIndex = defaultQuest.taskList.findIndex(task => task.id === taskID);
+    defaultQuest.taskList.splice(arrayIndex, 1);
+    storeLocalData("taskList", defaultQuest.taskList);
     loadQuestlog();
 };
 
 function submitNewQuest(e){
     e.preventDefault();
-    const quest = document.getElementById("quest").value;
-    storeLocalData("taskList", defaultTaskList.taskList);
-    closeAddTaskNoteProjectDialog();
-    loadQuestlog();
+//     Hier die funktionen ergänzen zum anlegen von quests
+//     const quest = document.getElementById("quest").value;
+//     storeLocalData("questList", defaultQuest.taskList);
+//     closeAddTaskNoteProjectDialog();
+//     loadQuestlog();
 };
 
 function deleteProject(){
