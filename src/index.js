@@ -11,7 +11,8 @@ import {
     deleteNote,
     submitNewTask,
     deleteTask,
-    submitNewQuest
+    submitNewQuest,
+    deleteQuest
 } from './app/domHandler.js';
 
 loadQuestlog();
@@ -39,7 +40,7 @@ document.getElementById("content").addEventListener("click", (e) => {
 document.getElementById("content").addEventListener("click", (e) =>{
     if(e.target.classList.contains("deleteNoteButton")) deleteNote(e);
     else if (e.target.classList.contains("deleteTaskButton")) deleteTask(e);
-    else if (e.target.classList.contains("deleteQuestButton")) deleteProject(e);
+    else if (e.target.classList.contains("deleteQuestButton")) deleteQuest(e);
 });
 
 document.getElementById("content").addEventListener("click", (e) => {

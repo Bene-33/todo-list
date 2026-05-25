@@ -4,12 +4,9 @@ import {
     storeLocalData
 } from "./programm.js";
 
-const defaultQuest = createQuest("default");
+const defaultQuest = createQuest("Hub");
 let quests = loadLocalData("quests", [defaultQuest]);
 let activeQuestId = quests[0].id; 
-// defaultQuest.taskList = loadLocalData("taskList", []);
-
-
 
 const loadQuestlog = () => {
     const content = document.getElementById("content");
@@ -143,13 +140,24 @@ function saveQuests(){
 function addQuest(name){
     const quest = createQuest(name);
     quests.push(quest);
-    saveQuests()
     return quest;
-}
+};
+
+function deleteQuest(questId){
+    if(questId === quests[0].id){
+        alert("Default Quest cannot be deleted.");
+        return;
+    } else if (questId === activeQuestId){
+        activeQuestId = quests[0].id;
+    } else{
+        quests = quests.filter(quest => quest.id !== questId);
+    }
+};
 
 export {
     loadQuestlog,
     getActiveQuest,
     saveQuests,
-    addQuest
+    addQuest,
+    deleteQuest
 };

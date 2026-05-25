@@ -7,7 +7,8 @@ import {
     loadQuestlog,
     getActiveQuest,
     saveQuests,
-    addQuest
+    addQuest,
+    deleteQuest as deleteQuestFromList
 } from "./questlog";
 
 import {
@@ -76,10 +77,15 @@ function submitNewQuest(e){
     const questName = document.getElementById("quest").value;
     addQuest(questName);
     e.target.closest("dialog").close();
+    saveQuests();
     loadQuestlog();
 };
 
-function deleteProject(){
+function deleteQuest(e){
+    const questID = e.target.closest("li").dataset.questId;
+    deleteQuestFromList(questID);
+    saveQuests();
+    loadQuestlog();
 };
 
 export{
@@ -90,5 +96,5 @@ export{
     submitNewTask,
     deleteTask,
     submitNewQuest,
-    deleteProject
+    deleteQuest
 };
