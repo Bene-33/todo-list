@@ -14,6 +14,7 @@ import {
     deleteTask,
     submitNewQuest,
     deleteQuest,
+    openEditTaskDialog
 } from './app/domHandler.js';
 
 loadQuestlog();
@@ -21,7 +22,12 @@ loadQuestlog();
 document.getElementById("switchProjectsNotes").addEventListener("click", switchProjectsNotes);
 
 document.getElementById("content").addEventListener("click", (e) => {
-    if (e.target.id === "addTask")    openDialog(".addNewTaskProjectNoteDialog");
+    if (e.target.id === "addTask"){
+        const dialog  = document.querySelector(".addNewTaskProjectNoteDialog");
+        delete dialog.dataset.openEditTaskId;
+        dialog.querySelector("form").reset();
+        openDialog(".addNewTaskProjectNoteDialog");
+    }    
     else if (e.target.id === "addQuest") openDialog(".addNewQuestDialog");
     else if (e.target.id === "addNote")    openDialog(".addNewTaskProjectNoteDialog");   // siehe unten
 });
@@ -60,4 +66,10 @@ document.getElementById("content").addEventListener("click", (e) => {
     if (!questLi) return;                            
     setActiveQuest(questLi.dataset.questId);
     loadQuestlog();
+});
+
+document.getElementById("content").addEventListener("click", (e) => {
+    if(e.target.classList.contains("editTaskButton")){
+        openEditTaskDialog(e);
+    }
 });

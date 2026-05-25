@@ -172,11 +172,19 @@ function deleteQuest(questId){
     }
 };
 
+function updateTask(taskId, updates){
+    const task = getActiveQuest().taskList.find(task => task.id === taskId);
+    if(!task) return;
+    Object.assign(task, updates);
+    saveQuests();
+};
+
 export {
     loadQuestlog,
     getActiveQuest,
     setActiveQuest,
     saveQuests,
     addQuest,
-    deleteQuest
+    deleteQuest,
+    updateTask
 };

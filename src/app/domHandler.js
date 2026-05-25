@@ -8,7 +8,8 @@ import {
     getActiveQuest,
     saveQuests,
     addQuest,
-    deleteQuest as deleteQuestFromList
+    deleteQuest as deleteQuestFromList,
+    updateTask
 } from "./questlog";
 
 import {
@@ -53,13 +54,22 @@ function deleteNote(e){
 
 function submitNewTask(e){
     e.preventDefault();
-    const taskTitle = document.getElementById("taskTitle").value;
-    const taskContent = document.getElementById("taskContent").value;
-    const taskDueDate = document.getElementById("taskDueDate").value;
-    const taskPriority = document.getElementById("taskPriority").value;
-    const taskStatus = document.getElementById("taskStatus").value;
-    getActiveQuest().taskList.push(createTask(taskTitle, taskContent, taskDueDate, taskPriority, taskStatus));
-    saveQuests();
+    const editDialog = e.target.closest("dialog");
+    const editTaskId = editDialog.dataset.editTaskId;
+    const body = {
+        title: document.getElementById("taskTitle").value,
+        content: document.getElementById("taskContent").value,
+        dueDate: document.getElementById("taskDueDate").value,
+        priority: document.getElementById("taskPriority").value,
+        status: document.getElementById("taskStatus").value
+    }
+    if(editTaskId){
+        updateTask(editTaskId, body);
+        delete editDialog.dataset.editTaskId;
+    } else {
+        getActiveQuest().taskList.push(createTask(body.title, body.content, body.dueDate, body.priority, body.status));
+        saveQuests();
+    }
     e.target.closest("dialog").close();
     loadQuestlog();
 };
@@ -77,7 +87,6 @@ function submitNewQuest(e){
     const questName = document.getElementById("quest").value;
     addQuest(questName);
     e.target.closest("dialog").close();
-    saveQuests();
     loadQuestlog();
 };
 
@@ -88,6 +97,19 @@ function deleteQuest(e){
     loadQuestlog();
 };
 
+function openEditTaskDialog(e){
+    const taskID = e.target.closest("li").dataset.taskId;
+    const task = getActiveQuest().taskList.find(task => task.id === taskID);
+    document.getElementById("taskTitle").value = task.title;
+    document.getElementById("taskContent").value = task.content;
+    document.getElementById("taskDueDate").value = task.dueDate;
+    document.getElementById("taskPriority").value = task.priority;
+    document.getElementById("taskStatus").value = task.status;
+    const dialog = document.querySelector(".addNewTaskProjectNoteDialog");
+    dialog.dataset.editTaskId = taskID;
+    openDialog(".addNewTaskProjectNoteDialog");
+}
+
 export{
     switchProjectsNotes,
     openDialog,
@@ -96,5 +118,6 @@ export{
     submitNewTask,
     deleteTask,
     submitNewQuest,
-    deleteQuest
+    deleteQuest,
+    openEditTaskDialog
 };
