@@ -6,7 +6,7 @@ import {
 
 const defaultQuest = createQuest("Hub");
 let quests = loadLocalData("quests", [defaultQuest]);
-let activeQuestId = quests[0].id; 
+let activeQuestId = loadLocalData("activeQuestId", defaultQuest.id); 
 
 const loadQuestlog = () => {
     const content = document.getElementById("content");
@@ -70,6 +70,9 @@ const loadQuestlog = () => {
         const li = document.createElement("li");
         li.className = "questItem";
         li.dataset.questId = quest.id;
+        if (quest.id === activeQuestId){
+            li.classList.add("activeQuest");
+        }
         li.append(questName, deleteButton);
         questListContainer.appendChild(li);
     });
@@ -128,6 +131,11 @@ const loadQuestlog = () => {
     });
 };
 
+function setActiveQuest(id){
+    activeQuestId = id;
+    saveQuests();
+}
+
 function getActiveQuest(){
     return quests.find(quest => quest.id === activeQuestId);
 };
@@ -157,6 +165,7 @@ function deleteQuest(questId){
 export {
     loadQuestlog,
     getActiveQuest,
+    setActiveQuest,
     saveQuests,
     addQuest,
     deleteQuest

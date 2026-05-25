@@ -1,7 +1,8 @@
 import './style.css';
 
 import {
-    loadQuestlog
+    loadQuestlog,
+    setActiveQuest
 } from './app/questlog.js';
 
 import {
@@ -12,7 +13,7 @@ import {
     submitNewTask,
     deleteTask,
     submitNewQuest,
-    deleteQuest
+    deleteQuest,
 } from './app/domHandler.js';
 
 loadQuestlog();
@@ -51,4 +52,12 @@ document.getElementById("content").addEventListener("click", (e) => {
         if(isOpen) {e.target.textContent = ">"}
         else    {e.target.textContent = "v"};
     }
+});
+
+document.getElementById("content").addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") return;       
+    const questLi = e.target.closest(".questItem");
+    if (!questLi) return;                            
+    setActiveQuest(questLi.dataset.questId);
+    loadQuestlog();
 });
