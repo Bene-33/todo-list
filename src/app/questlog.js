@@ -87,7 +87,7 @@ const loadQuestlog = () => {
 
         const taskHeaderContainer = document.createElement("span");
         taskHeaderContainer.className = "taskHeader";
-        taskHeaderContainer.append(taskTitle, document.createElement("br"), "Due Date: ", taskDueDate,);
+        taskHeaderContainer.append(taskTitle);
         
         
         const taskContentContainer = document.createElement("span");
@@ -95,7 +95,8 @@ const loadQuestlog = () => {
         taskContentContainer.append(taskContent);
 
         const taskDueDateContainer = document.createElement("span");
-        taskDueDateContainer.className = "taskDueDate";
+        taskDueDateContainer.className = "taskDueDate"; 
+        taskDueDateContainer.append(document.createElement("br"), "Due Date: ", taskDueDate);
 
         
         const taskPriorityContainer = document.createElement("span");
@@ -122,11 +123,15 @@ const loadQuestlog = () => {
         taskHiddenContainer.className = "taskHidden";
         taskHiddenContainer.append(taskContentContainer, taskBodyContainer);
 
+        const topRow = document.createElement("div");
+        topRow.className = "taskTopRow";
+        topRow.append(expandButton, taskHeaderContainer, deleteButton);
+
 
         const li = document.createElement("li");
         li.className = "taskListItem";
         li.dataset.taskId = task.id;
-        li.append(taskHeaderContainer, expandButton, taskHiddenContainer, deleteButton);
+        li.append(topRow, taskHiddenContainer);
         taskListContainer.appendChild(li);
     });
 };

@@ -107,8 +107,8 @@ button{
 
 .taskNotesProjectLists li{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
     gap: 0.5em;
     font-size: 1.2em;
     background-color: #7965C1;
@@ -116,10 +116,17 @@ button{
     border-radius: 0.5em;
 }
 
+.taskTopRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
 .deleteTaskNoteProjectButton{
     color:#E3D095;
     background-color: transparent;
     font-size: 1em;
+    justify-self: flex-end;
 }
 
 .taskNotesProjectLists{
@@ -195,8 +202,12 @@ form{
 
 .expandTaskButton{
     background-color: transparent;
-    font-weight: bold;
     font-size: 1.2em;
+    font-weight: bold;
+}
+
+.taskListItem{
+    position: relative;
 }
 
 .taskHidden{
