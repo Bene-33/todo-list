@@ -84,11 +84,23 @@ const loadQuestlog = () => {
         const taskDueDate = document.createTextNode(task.dueDate);
         const taskPriority = document.createTextNode(task.priority);
         const taskStatus = document.createTextNode(task.status);
+        
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "deleteTaskNoteProjectButton deleteTaskButton";
+        deleteButton.textContent = "X";
+        
+        const expandButton = document.createElement("button");
+        expandButton.className = "expandTaskButton";
+        expandButton.textContent = ">";
+        
+        const editButton = document.createElement("button");
+        editButton.className = "editTaskButton";
+        editButton.textContent = "edit";
+        editButton.dataset.taskId = task.id;
 
         const taskHeaderContainer = document.createElement("span");
         taskHeaderContainer.className = "taskHeader";
         taskHeaderContainer.append(taskTitle);
-        
         
         const taskContentContainer = document.createElement("span");
         taskContentContainer.className = "taskContent";
@@ -109,15 +121,8 @@ const loadQuestlog = () => {
         
         const taskBodyContainer = document.createElement("div");
         taskBodyContainer.className = "taskBody";
-        taskBodyContainer.append(taskDueDateContainer, taskPriorityContainer, taskStatusContainer);
+        taskBodyContainer.append(editButton, taskDueDateContainer, taskPriorityContainer, taskStatusContainer);
         
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "deleteTaskNoteProjectButton deleteTaskButton";
-        deleteButton.textContent = "X";
-        
-        const expandButton = document.createElement("button");
-        expandButton.className = "expandTaskButton";
-        expandButton.textContent = ">";
         
         const taskHiddenContainer = document.createElement("span");
         taskHiddenContainer.className = "taskHidden";

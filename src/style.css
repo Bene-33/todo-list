@@ -209,8 +209,6 @@ form{
     font-weight: bold;
 }
 
-
-
 .taskHidden{
     display: none;
 }
@@ -225,6 +223,14 @@ form{
 
 .questItem.activeQuest{
     background-color: #7965C1;
+}
+
+.editTaskButton{
+    background-color: #483AA0;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 0.5em;
+    padding: 0.5em;
 }
 
 /* 
